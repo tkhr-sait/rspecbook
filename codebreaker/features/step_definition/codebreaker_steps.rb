@@ -9,7 +9,7 @@ class Output
   end
 end
 
-def output
+def getOutput
   @output ||= Output.new
 end
 
@@ -17,12 +17,12 @@ Given("私はまだ遊んでいない") do
 end
 
 When("私は新しいゲームを開始する") do
-  game = Codebreaker::Game.new(output)
+  game = Codebreaker::Game.new(getOutput)
   game.start
 end
 
 Then("私は {string} を見ることができる") do |string|
-  expect(output.messages).to include(string)
+  expect(getOutput.messages).to include(string)
 end
 
 Given("暗号値は{string}") do |string|
