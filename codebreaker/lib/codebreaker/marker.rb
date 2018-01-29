@@ -22,6 +22,8 @@ module Codebreaker
       end
     end
 
+    # 本そのままだが、初見だと何やってるかわからない...
+    # http://mugenup-tech.hatenadiary.com/entry/2014/07/03/195554
     def delete_first(code, n)
       code.delete_at(code.index(n)) if code.index(n)
     end
