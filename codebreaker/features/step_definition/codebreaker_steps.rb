@@ -18,7 +18,7 @@ end
 
 When("私は新しいゲームを開始する") do
   game = Codebreaker::Game.new(getOutput)
-  game.start
+  game.start('1234')
 end
 
 Then("私は {string} を見ることができる") do |string|
@@ -26,14 +26,15 @@ Then("私は {string} を見ることができる") do |string|
 end
 
 Given("暗号値は{string}") do |string|
-    pending # Write code here that turns the phrase above into concrete actions
+  @game = Codebreaker::Game.new(getOutput)
+  @game.start(string)
 end
 
 When("推測値は{string}") do |string|
-    pending # Write code here that turns the phrase above into concrete actions
+  @game.guess(string)
 end
 
 Then("マークは{string}となる") do |string|
-    pending # Write code here that turns the phrase above into concrete actions
+  expect(getOutput.messages).to include(string)
 end
 
