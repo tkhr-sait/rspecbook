@@ -18,40 +18,10 @@ module Codebreaker
     end
 
     describe "#guess" do
-      context "マッチなし" do
-        it "''マークを送信" do
-          game.start('1234')
-          expect(output).to receive(:puts).with('')
-          game.guess('5555')
-        end
-      end
-      context "数値だけ１つマッチ" do
-        it "'-'マークを送信" do
-          game.start('1234')
-          expect(output).to receive(:puts).with('-')
-          game.guess('2555')
-        end
-      end
-      context "数値と位置１つマッチ" do
-        it "'+'マークを送信" do
-          game.start('1234')
-          expect(output).to receive(:puts).with('+')
-          game.guess('1555')
-        end
-      end
-      context "数値だけ２つマッチ" do
-        it "'--'マークを送信" do
-          game.start('1234')
-          expect(output).to receive(:puts).with('--')
-          game.guess('2355')
-        end
-      end
-      context "数値だけ１つマッチ、数値と位置１つマッチ" do
-        it "'--'マークを送信" do
-          game.start('1234')
-          expect(output).to receive(:puts).with('+-')
-          game.guess('2535')
-        end
+      it "マークを送信" do
+        game.start('1234')
+        expect(output).to receive(:puts).with('++++')
+        game.guess('1234')
       end
     end
   end
